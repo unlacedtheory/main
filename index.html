@@ -48,18 +48,22 @@
   .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 58px); font-weight: 800; line-height: 1.0; color: var(--black); text-transform: uppercase; letter-spacing: -0.01em; }
   .section-title span { color: var(--orange); }
 
-  /* ---- HEADER ---- */
+  /* ---- HEADER & CTA ---- */
   header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .logo { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 22px; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  
+  .logo { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 22px; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; color: var(--black); text-decoration: none; flex-shrink: 0; }
   .logo span { color: var(--orange); }
   .logo-img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--orange); display: block; }
-  nav { display: flex; align-items: center; gap: 8px; }
-  nav a { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--grey-dark); text-decoration: none; padding: 8px 14px; border-radius: 50px; transition: all 0.2s; }
+  
+  nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+  nav a { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--grey-dark); text-decoration: none; padding: 8px 14px; border-radius: 50px; transition: all 0.2s; white-space: nowrap; }
   nav a:hover { color: var(--black); background: var(--grey-pale); }
-  .nav-cta { background: var(--orange); color: var(--white) !important; padding: 10px 20px !important; font-weight: 600 !important; }
+  
+  .nav-cta { background: var(--orange); color: var(--white) !important; padding: 10px 20px !important; font-weight: 600 !important; border-radius: 50px; margin-left: 12px; flex-shrink: 0; }
   .nav-cta:hover { background: var(--orange-dark) !important; }
-  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); margin: 5px 0; border-radius: 2px; transition: all 0.3s; }
   
   .mobile-nav { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 24px; }
@@ -143,8 +147,9 @@
   .register-header { text-align: center; margin-bottom: 40px; padding: 0 10px; }
   .register-header .section-title { color: var(--white); }
   .register-header p { color: rgba(255,255,255,0.6); margin-top: 16px; font-size: 16px; }
-  .form-container-wrap { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; background: var(--white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.4); border-top: 6px solid var(--orange); padding: 6px; width: 100%; }
-  .form-container-wrap iframe { width: 100% !important; height: 3480px; border: none; display: block; background: #ffffff; }
+  .form-container-wrap { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; background: var(--white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.4); border-top: 6px solid var(--orange); padding: 48px 24px; width: 100%; text-align: center; }
+  .closed-msg-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: var(--black); text-transform: uppercase; margin-bottom: 12px; line-height: 1.1; }
+  .closed-msg-desc { font-size: 16px; color: var(--grey-dark); max-width: 500px; margin: 0 auto 24px; }
 
   /* ---- SOCIAL / CONTACT SECTION ---- */
   #contact { padding: clamp(60px, 8vw, 100px) 0; background: var(--white); text-align: center; }
@@ -178,9 +183,10 @@
   .footer-links a:hover { color: var(--orange); }
 
   /* ---- RESPONSIVE BREAKPOINTS ---- */
-  @media (max-width: 992px) {
+  @media (max-width: 1040px) {
     nav a:not(.nav-cta) { display: none; }
     .hamburger { display: block; }
+    nav { gap: 0; }
     .about-grid { grid-template-columns: 1fr; gap: 44px; }
     .run-1-grid { grid-template-columns: 1fr; gap: 44px; }
     .footer-top { grid-template-columns: 1fr 1fr; }
@@ -193,6 +199,13 @@
     .updates-header { flex-direction: column; align-items: flex-start; }
     .updates-header .btn-orange { width: 100%; text-align: center; }
   }
+
+  @media (max-width: 480px) {
+    .header-inner { gap: 8px; }
+    .logo { font-size: 19px; gap: 8px; }
+    .logo-img { height: 36px; width: 36px; }
+    .nav-cta { padding: 8px 14px !important; font-size: 13px; margin-left: 4px; }
+  }
   
   @media (max-width: 600px) {
     .about-pillars { grid-template-columns: 1fr; gap: 12px; }
@@ -201,7 +214,6 @@
     .footer-top { grid-template-columns: 1fr; gap: 36px; }
     .footer-bottom { flex-direction: column; text-align: center; }
     .footer-links { justify-content: center; gap: 14px; }
-    .form-container-wrap iframe { height: 3620px; } 
   }
 </style>
 </head>
@@ -230,7 +242,7 @@
       <a href="#updates">Run Updates</a>
       <a href="#register">Register</a>
       <a href="#contact">Contact Us</a>
-      <a href="#register" class="btn-orange nav-cta" style="border-radius:50px; margin-left:8px;">Join Next Run</a>
+      <a href="#register" class="nav-cta">Join Next Run</a>
     </nav>
     <button class="hamburger" onclick="openMobileNav()" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -359,7 +371,7 @@
         <span class="section-label">What's Happening</span>
         <h2 class="section-title">Run <span>Updates</span></h2>
       </div>
-      <a href="#register" class="btn-orange">Register for a Run</a>
+      <a href="#register" class="btn-orange">Registration Status</a>
     </div>
     <div class="updates-grid">
       <div class="update-card">
@@ -385,11 +397,13 @@
     <div class="register-header">
       <span class="section-label" style="color:rgba(245,92,27,0.9);">Secure Your Spot</span>
       <h2 class="section-title">Community <span>Registration</span></h2>
-      <p>Please review and fill out our official sign-up sheet below to secure your entry slot for the upcoming run.</p>
+      <p>Stay updated on registration slots and group openings for our community runs.</p>
     </div>
     
     <div class="form-container-wrap">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd5nWLRkG0NX6NmhClpzu1e8NYpnlVepEmXZx3OIxQZADrFWw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      <h3 class="closed-msg-title">Online Registrations for UT Run-2 are closed</h3>
+      <p class="closed-msg-desc">We have reached our maximum capacity for this run! Thank you so much for the overwhelming response, Vijayawada.</p>
+      <a href="https://chat.whatsapp.com/Ed8JNGhQAM4F529b7jT76n" target="_blank" class="btn-orange">Join WhatsApp Hub for UT Run-3 Updates</a>
     </div>
   </div>
 </section>
