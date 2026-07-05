@@ -100,28 +100,35 @@
   .pillar-title { font-family: var(--font-display); font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; color: var(--black); }
   .pillar-desc { font-size: 13px; color: var(--grey-mid); line-height: 1.5; }
 
-  /* ---- UT RUN - 1 ---- */
-  #ut-run-1 { padding: clamp(60px, 8vw, 110px) 0; background: var(--white); border-top: 1px solid var(--border); }
-  .run-1-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(40px, 6vw, 60px); align-items: center; }
-  .run-1-content h3 { font-family: var(--font-display); font-size: 32px; font-weight: 800; text-transform: uppercase; margin-bottom: 16px; color: var(--black); }
-  .run-1-content p { color: var(--grey-dark); font-size: 16px; margin-bottom: 20px; }
-  .run-1-stats { display: flex; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
-  .stat-box { background: var(--orange-pale); padding: 20px; border-radius: var(--radius-md); flex: 1; min-width: 105px; text-align: center; }
-  .stat-num { font-family: var(--font-display); font-size: clamp(28px, 4vw, 36px); font-weight: 900; color: var(--orange); display: block; line-height: 1; margin-bottom: 4px; }
-  .stat-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--dark-mid); letter-spacing: 0.05em; }
-  .run-1-img-wrap { position: relative; width: 100%; }
+  /* ---- PAST RUNS ---- */
+  #past-runs { padding: clamp(60px, 8vw, 110px) 0; background: var(--white); border-top: 1px solid var(--border); }
+  .runs-layout { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 90px); margin-top: 40px; }
+  .run-row { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 6vw, 60px); align-items: center; }
+  .run-row.reverse { grid-template-columns: 0.9fr 1.1fr; }
+  .run-content h3 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 38px); font-weight: 800; text-transform: uppercase; margin-bottom: 16px; color: var(--black); }
+  .run-content h3 span { color: var(--orange); }
+  .run-content p { color: var(--grey-dark); font-size: 16px; margin-bottom: 20px; }
+  .run-stats { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  .stat-box { background: var(--orange-pale); padding: 16px; border-radius: var(--radius-md); flex: 1; min-width: 100px; text-align: center; }
+  .stat-num { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 32px); font-weight: 900; color: var(--orange); display: block; line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--dark-mid); letter-spacing: 0.05em; }
   
-  .run-1-graphic-container { position: relative; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 1/1; width: 100%; background: var(--dark); }
-  .run-1-graphic-container img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; z-index: 1; }
-  .run-1-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.85) 100%); z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(24px, 4vw, 40px); }
-  .run-1-tag { position: relative; z-index: 3; font-family: var(--font-display); font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; }
-  .run-1-title { position: relative; z-index: 3; font-family: var(--font-display); font-size: clamp(32px, 4vw, 42px); font-weight: 900; text-transform: uppercase; line-height: 1.0; margin-top: 4px; color: var(--white); }
-  .run-1-badge { position: absolute; top: -15px; left: -15px; background: var(--orange); color: var(--white); border-radius: var(--radius-lg); padding: 16px 20px; font-family: var(--font-display); text-align: center; box-shadow: var(--shadow-lg); z-index: 4; }
-  .run-1-badge-num { font-size: clamp(26px, 3.5vw, 34px); font-weight: 900; line-height: 1; display: block; }
-  .run-1-badge-text { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; opacity: 0.9; }
+  .run-media-wrap { position: relative; width: 100%; }
+  .run-graphic-container { position: relative; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 1/1; width: 100%; background: var(--dark); }
+  .run-graphic-container img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; z-index: 1; }
+  .run-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.85) 100%); z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 32px); }
+  .run-tag { position: relative; z-index: 3; font-family: var(--font-display); font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; font-size: 13px; }
+  .run-badge { position: absolute; top: -15px; left: -15px; background: var(--orange); color: var(--white); border-radius: var(--radius-lg); padding: 14px 18px; font-family: var(--font-display); text-align: center; box-shadow: var(--shadow-lg); z-index: 4; }
+  .run-badge-num { font-size: clamp(22px, 3vw, 28px); font-weight: 900; line-height: 1; display: block; }
+  .run-badge-text { font-size: 9px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; opacity: 0.9; }
+
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
+  .gallery-item { position: relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); aspect-ratio: 1/1; background: var(--dark); transition: transform 0.2s; }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* ---- RUN UPDATES ---- */
-  #updates { padding: clamp(60px, 8vw, 110px) 0; background: var(--grey-pale); }
+  #updates { padding: clamp(60px, 8vw, 110px) 0; background: var(--grey-pale); border-top: 1px solid var(--border); }
   .alert-banner { background: var(--orange); color: var(--white); border-radius: var(--radius-md); padding: 18px 24px; display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
   .alert-icon { font-size: 22px; flex-shrink: 0; }
   .alert-text { flex: 1; }
@@ -135,7 +142,7 @@
   .update-card-img { width: 40%; position: relative; background: #1c1c1c; overflow: hidden; }
   .update-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .update-card-body { padding: clamp(20px, 4vw, 32px); flex: 1; display: flex; flex-direction: column; justify-content: center; }
-  .date-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--orange-pale); color: var(--orange); font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 5px 12px; border-radius: 50px; margin-bottom: 12px; align-self: flex-start; }
+  .date-badge { inline-flex; align-items: center; gap: 6px; background: var(--orange-pale); color: var(--orange); font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 5px 12px; border-radius: 50px; margin-bottom: 12px; align-self: flex-start; }
   .update-card-title { font-family: var(--font-display); font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.2; margin-bottom: 10px; color: var(--black); }
   .update-card-desc { font-size: 15px; color: var(--grey-mid); line-height: 1.6; }
   .location-anchor { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; transition: color 0.2s; align-self: flex-start; }
@@ -147,9 +154,10 @@
   .register-header { text-align: center; margin-bottom: 40px; padding: 0 10px; }
   .register-header .section-title { color: var(--white); }
   .register-header p { color: rgba(255,255,255,0.6); margin-top: 16px; font-size: 16px; }
+  
   .form-container-wrap { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; background: var(--white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.4); border-top: 6px solid var(--orange); padding: 48px 24px; width: 100%; text-align: center; }
-  .closed-msg-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: var(--black); text-transform: uppercase; margin-bottom: 12px; line-height: 1.1; }
-  .closed-msg-desc { font-size: 16px; color: var(--grey-dark); max-width: 500px; margin: 0 auto 24px; }
+  .form-iframe-container { width: 100%; display: flex; justify-content: center; margin-top: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .form-iframe-container iframe { max-width: 100%; border: none; }
 
   /* ---- SOCIAL / CONTACT SECTION ---- */
   #contact { padding: clamp(60px, 8vw, 100px) 0; background: var(--white); text-align: center; }
@@ -188,7 +196,7 @@
     .hamburger { display: block; }
     nav { gap: 0; }
     .about-grid { grid-template-columns: 1fr; gap: 44px; }
-    .run-1-grid { grid-template-columns: 1fr; gap: 44px; }
+    .run-row, .run-row.reverse { grid-template-columns: 1fr; gap: 44px; }
     .footer-top { grid-template-columns: 1fr 1fr; }
   }
   
@@ -198,6 +206,7 @@
     .alert-banner { flex-direction: column; text-align: center; gap: 12px; }
     .updates-header { flex-direction: column; align-items: flex-start; }
     .updates-header .btn-orange { width: 100%; text-align: center; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 480px) {
@@ -205,6 +214,7 @@
     .logo { font-size: 19px; gap: 8px; }
     .logo-img { height: 36px; width: 36px; }
     .nav-cta { padding: 8px 14px !important; font-size: 13px; margin-left: 4px; }
+    .gallery-grid { grid-template-columns: 1fr; }
   }
   
   @media (max-width: 600px) {
@@ -223,7 +233,7 @@
   <button class="mobile-close" onclick="closeMobileNav()" aria-label="Close menu">✕</button>
   <a href="#home" onclick="closeMobileNav()">Home</a>
   <a href="#about" onclick="closeMobileNav()">Our Story</a>
-  <a href="#ut-run-1" onclick="closeMobileNav()">UT Run - 1</a>
+  <a href="#past-runs" onclick="closeMobileNav()">Past Runs</a>
   <a href="#updates" onclick="closeMobileNav()">Run Updates</a>
   <a href="#register" onclick="closeMobileNav()">Register</a>
   <a href="#contact" onclick="closeMobileNav()">Contact Us</a>
@@ -238,7 +248,7 @@
     <nav>
       <a href="#home">Home</a>
       <a href="#about">Our Story</a>
-      <a href="#ut-run-1">UT Run - 1</a>
+      <a href="#past-runs">Past Runs</a>
       <a href="#updates">Run Updates</a>
       <a href="#register">Register</a>
       <a href="#contact">Contact Us</a>
@@ -313,42 +323,82 @@
   </div>
 </section>
 
-<section id="ut-run-1">
+<section id="past-runs">
   <div class="container">
-    <div class="run-1-grid">
-      <div class="run-1-content">
-        <span class="section-label">Where It Began</span>
-        <h2 class="section-title">The Genesis: <span>UT Run - 1</span></h2>
-        <p style="margin-top:20px;">
-          Every movement needs a starting point. <strong>UT Run - 1</strong> our very first run, was honestly one of the most unforgettable experiences for us. Seeing an idea that started from random conversations actually come to life felt surreal.
-          <br><br>The run was held at Bratt, and what made it even more special was the police escort that accompanied us throughout the route. It gave the whole event such an energetic and professional vibe, and seeing everyone run together early in the morning was genuinely exciting.
-          <br><br>But it wasn’t just about the run. After crossing the finish line, everyone stayed back for the afterparty, where people got to chill, interact, dance, take pictures, and just enjoy the moment together. Watching strangers become friends in just a few hours made us realize that this was exactly the kind of community we wanted to build in Vijayawada.
-        </p>
-        <div class="run-1-stats">
-          <div class="stat-box">
-            <span class="stat-num">01</span>
-            <span class="stat-label">First Milestone</span>
+    <span class="section-label">Our Journey</span>
+    <h2 class="section-title">The Story So Far: <span>Past Runs</span></h2>
+    
+    <div class="runs-layout">
+      <div class="run-row">
+        <div class="run-content">
+          <h3>The Genesis: <span>UT Run - 1</span></h3>
+          <p>
+            Every movement needs a starting point. <strong>UT Run - 1</strong> our very first run, was honestly one of the most unforgettable experiences for us. Seeing an idea that started from random conversations actually come to life felt surreal.
+            <br><br>The run was held at Bratt, and what made it even more special was the police escort that accompanied us throughout the route. It gave the whole event such an energetic and professional vibe, and seeing everyone run together early in the morning was genuinely exciting.
+            <br><br>But it wasn’t just about the run. After crossing the finish line, everyone stayed back for the afterparty, where people got to chill, interact, dance, take pictures, and just enjoy the moment together.
+          </p>
+          <div class="run-stats">
+            <div class="stat-box">
+              <span class="stat-num">01</span>
+              <span class="stat-label">First Milestone</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">100%</span>
+              <span class="stat-label">Pure Vibe</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">Bratt</span>
+              <span class="stat-label">Location Base</span>
+            </div>
           </div>
-          <div class="stat-box">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Pure Vibe</span>
+        </div>
+        <div class="run-media-wrap">
+          <div class="run-badge">
+            <span class="run-badge-num">Police</span>
+            <span class="run-badge-text">Supervised<br>Running</span>
           </div>
-          <div class="stat-box">
-            <span class="stat-num">Vijayawada</span>
-            <span class="stat-label">Home Base</span>
+          <div class="run-graphic-container">
+            <img src="DSC00444.jpg" alt="UT Run 1 Start Baseline">
+            <div class="run-overlay">
+              <span class="run-tag">Inaugural Event</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="run-1-img-wrap">
-        <div class="run-1-badge">
-          <span class="run-1-badge-num">Police</span>
-          <span class="run-1-badge-text">Supervised<br>Running</span>
+
+      <div class="run-row reverse">
+        <div class="run-media-wrap">
+          <div class="gallery-grid">
+            <div class="gallery-item"><img src="DSC03652.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC03665.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC03685.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC03693.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC03924.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC04100.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC04307.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC04526.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC04598.jpg" alt="UT Run 2 Moment"></div>
+          </div>
         </div>
-        <div class="run-1-graphic-container">
-          <img src="DSC00444.jpg" alt="UT Run 1 Start Baseline">
-          <div class="run-1-overlay">
-            <span class="run-1-tag">Inaugural Event</span>
-            <h4 class="run-1-title">UT Run - 1 <br><span style="color:var(--orange);">History Made.</span></h4>
+        <div class="run-content">
+          <h3>Leveling Up: <span>UT Run - 2</span></h3>
+          <p>
+            Following an amazing launch, we brought the heat for <strong>UT Run - 2</strong>. Conducted on the bright morning of <strong>June 7th at 6:00 AM</strong>, this session turned things up with an energizing <strong>5km route</strong> starting and finishing right outside <strong>Arise Café</strong>.
+            <br><br>The turn-out was absolutely electric! The energy kept pounding well past the finish line as the community rallied inside for a high-intensity morning afterparty. It is safe to say the youth culture of Vijayawada has completely embraced early mornings.
+          </p>
+          <div class="run-stats">
+            <div class="stat-box">
+              <span class="stat-num">5K</span>
+              <span class="stat-label">Distance Cleared</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">June 7</span>
+              <span class="stat-label">Event Date</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">Arise</span>
+              <span class="stat-label">Cafe Hub</span>
+            </div>
           </div>
         </div>
       </div>
@@ -362,7 +412,7 @@
       <div class="alert-icon">📣</div>
       <div class="alert-text">
         <strong>Upcoming Event Update</strong>
-        <span>Check out the details for our upcoming community run in Vijayawada below!</span>
+        <span>Check out the details for UT Run - 3 happening in Vijayawada below!</span>
       </div>
       <button class="alert-dismiss" onclick="document.getElementById('alertBanner').style.display='none'" aria-label="Dismiss">✕</button>
     </div>
@@ -376,16 +426,16 @@
     <div class="updates-grid">
       <div class="update-card">
         <div class="update-card-img">
-          <img src="DSC00252.jpg" alt="Upcoming Run Location">
+          <img src="DSC04590.jpg" alt="UT Run 3 Location - Crab Café Afterparty">
         </div>
         <div class="update-card-body">
-          <div class="date-badge">June 7, 2026 • 6:00 AM</div>
-          <div class="update-card-title">Community Run — Nitro Pickleball Café</div>
+          <div class="date-badge">July 19 • 6:00 AM</div>
+          <div class="update-card-title">UT Run - 3 — Crab Café</div>
           <div class="update-card-desc">
-            Join us for an early morning run starting at Nitro Pickleball Café (near Novotel, Vijayawada, Andhra Pradesh). 
-            All pace groups are welcome. Stick around post-run to hang out and grab some refreshments!
+            Get ready for our third official community gathering! We're kicking off an exciting morning run starting at Crab Café, Vijayawada. 
+            All runners, walkers, and pace tiers are welcome. Stick around post-run to network and grab some great breakfast refreshments!
           </div>
-          <a href="https://maps.app.goo.gl/5cepovCYmRKsjCgYA" target="_blank" class="location-anchor">→ Run point location</a>
+          <a href="https://maps.app.goo.gl/uAgyra5N2epn3r5n6" target="_blank" class="location-anchor">→ Run point location</a>
         </div>
       </div>
     </div>
@@ -397,13 +447,13 @@
     <div class="register-header">
       <span class="section-label" style="color:rgba(245,92,27,0.9);">Secure Your Spot</span>
       <h2 class="section-title">Community <span>Registration</span></h2>
-      <p>Stay updated on registration slots and group openings for our community runs.</p>
+      <p>Fill out the official community registration form below to secure your spot for UT Run-3.</p>
     </div>
     
     <div class="form-container-wrap">
-      <h3 class="closed-msg-title">Online Registrations for UT Run-2 are closed</h3>
-      <p class="closed-msg-desc">We have reached our maximum capacity for this run! Thank you so much for the overwhelming response, Vijayawada.</p>
-      <a href="https://chat.whatsapp.com/Ed8JNGhQAM4F529b7jT76n" target="_blank" class="btn-orange">Join WhatsApp Hub for UT Run-3 Updates</a>
+      <div class="form-iframe-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf6QXr8ctOJ1S42XvFRafgSMMMHsYoMc89b-ShTXsGcgCObcQ/viewform?embedded=true" width="640" height="2300" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -452,7 +502,7 @@
         <h4>Navigation Links</h4>
         <a href="#home">Home Base</a>
         <a href="#about">Our Philosophy</a>
-        <a href="#ut-run-1">UT Run - 1</a>
+        <a href="#past-runs">Past Runs</a>
         <a href="#updates">Run Updates</a>
         <a href="#register">Register for Runs</a>
       </div>
