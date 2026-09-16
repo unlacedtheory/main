@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Runs - Unlaced Theory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --orange: #F55C1B;
+    --orange-dark: #D44810;
+    --orange-light: #FF7A3D;
+    --orange-pale: #FFF0E8;
+    --black: #111111;
+    --dark: #1C1C1C;
+    --dark-mid: #2A2A2A;
+    --grey-dark: #3A3A3A;
+    --grey-mid: #6B6B6B;
+    --grey-light: #ACACAC;
+    --grey-pale: #F2F2F0;
+    --grey-card: #F7F7F5;
+    --white: #FFFFFF;
+    --border: rgba(0,0,0,0.10);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+    --shadow-lg: 0 24px 64px rgba(0,0,0,0.14);
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 32px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--black); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+  /* ---- UTILITIES ---- */
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  .btn-orange { background: var(--orange); color: var(--white); border: none; padding: 14px 28px; border-radius: 50px; font-family: var(--font-body); font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.15s; display: inline-block; text-decoration: none; letter-spacing: 0.01em; }
+  .btn-orange:hover { background: var(--orange-dark); transform: translateY(-1px); }
+  .section-label { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; display: block; }
+  .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 58px); font-weight: 800; line-height: 1.0; color: var(--black); text-transform: uppercase; letter-spacing: -0.01em; }
+  .section-title span { color: var(--orange); }
+
+  /* ---- HEADER & CTA ---- */
+  header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  
+  .logo { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 22px; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; color: var(--black); text-decoration: none; flex-shrink: 0; }
+  .logo span { color: var(--orange); }
+  .logo-img { height: 44px; width: 44px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--orange); display: block; }
+  
+  nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+  nav a { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--grey-dark); text-decoration: none; padding: 8px 14px; border-radius: 50px; transition: all 0.2s; white-space: nowrap; }
+  nav a:hover { color: var(--black); background: var(--grey-pale); }
+  
+  .nav-cta { background: var(--orange); color: var(--white) !important; padding: 10px 20px !important; font-weight: 600 !important; border-radius: 50px; margin-left: 12px; flex-shrink: 0; }
+  .nav-cta:hover { background: var(--orange-dark) !important; }
+  
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-shrink: 0; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); margin: 5px 0; border-radius: 2px; transition: all 0.3s; }
+  
+  .mobile-nav { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 24px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-family: var(--font-display); font-size: clamp(28px, 6vw, 36px); font-weight: 800; text-transform: uppercase; color: var(--black); text-decoration: none; letter-spacing: 0.02em; text-align: center; }
+  .mobile-nav a:hover { color: var(--orange); }
+  .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; font-size: 32px; cursor: pointer; color: var(--black); }
+
+  /* ---- PAGE HERO ---- */
+  .page-hero { padding: clamp(60px, 8vw, 90px) 0 40px; background: var(--dark); color: var(--white); text-align: center; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(245,92,27,0.2) 0%, transparent 70%); pointer-events: none; }
+  .page-hero .section-title { color: var(--white); }
+  .page-hero p { color: rgba(255,255,255,0.7); max-width: 600px; margin: 16px auto 0; font-size: 17px; }
+
+  /* ---- PAST RUNS SECTION ---- */
+  #past-runs { padding: clamp(60px, 8vw, 110px) 0; background: var(--white); }
+  .runs-layout { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 90px); margin-top: 40px; }
+  .run-row { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 6vw, 60px); align-items: center; }
+  .run-row.reverse { grid-template-columns: 0.9fr 1.1fr; }
+  .run-content h3 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 38px); font-weight: 800; text-transform: uppercase; margin-bottom: 16px; color: var(--black); }
+  .run-content h3 span { color: var(--orange); }
+  .run-content p { color: var(--grey-dark); font-size: 16px; margin-bottom: 20px; }
+  .run-stats { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  .stat-box { background: var(--orange-pale); padding: 16px; border-radius: var(--radius-md); flex: 1; min-width: 100px; text-align: center; }
+  .stat-num { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 32px); font-weight: 900; color: var(--orange); display: block; line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--dark-mid); letter-spacing: 0.05em; }
+  
+  .run-media-wrap { position: relative; width: 100%; }
+  .run-graphic-container { position: relative; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); aspect-ratio: 1/1; width: 100%; background: var(--dark); }
+  .run-graphic-container img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; z-index: 1; }
+  .run-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.85) 100%); z-index: 2; display: flex; flex-direction: column; justify-content: flex-end; padding: clamp(20px, 4vw, 32px); }
+  .run-tag { position: relative; z-index: 3; font-family: var(--font-display); font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; font-size: 13px; }
+  .run-badge { position: absolute; top: -15px; left: -15px; background: var(--orange); color: var(--white); border-radius: var(--radius-lg); padding: 14px 18px; font-family: var(--font-display); text-align: center; box-shadow: var(--shadow-lg); z-index: 4; }
+  .run-badge-num { font-size: clamp(22px, 3vw, 28px); font-weight: 900; line-height: 1; display: block; }
+  .run-badge-text { font-size: 9px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; opacity: 0.9; }
+
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
+  .gallery-item { position: relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); aspect-ratio: 1/1; background: var(--dark); transition: transform 0.2s; }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---- FOOTER ---- */
+  footer { background: var(--dark); color: rgba(255,255,255,0.7); padding: clamp(40px, 6vw, 80px) 0 0; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: clamp(30px, 5vw, 60px); padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-brand .logo { color: var(--white); font-size: 24px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); margin-top: 16px; max-width: 320px; }
+  .footer-col h4 { font-family: var(--font-display); font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+  .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--orange); }
+  .footer-social-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-social-links a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+  .footer-social-links a:hover { color: var(--orange); }
+  .disclaimer { background: rgba(0,0,0,0.2); padding: 32px 0; margin-top: 20px; }
+  .disclaimer p { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+  .disclaimer strong { color: rgba(255,255,255,0.5); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding: 26px 0; gap: 16px; flex-wrap: wrap; }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.35); }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--orange); }
+
+  /* ---- RESPONSIVE BREAKPOINTS ---- */
+  @media (max-width: 1040px) {
+    nav a:not(.nav-cta) { display: none; }
+    .hamburger { display: block; }
+    nav { gap: 0; }
+    .run-row, .run-row.reverse { grid-template-columns: 1fr; gap: 44px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  
+  @media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .header-inner { gap: 8px; }
+    .logo { font-size: 19px; gap: 8px; }
+    .logo-img { height: 36px; width: 36px; }
+    .nav-cta { padding: 8px 14px !important; font-size: 13px; margin-left: 4px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+  
+  @media (max-width: 600px) {
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="closeMobileNav()" aria-label="Close menu">✕</button>
+  <a href="index.html#home">Home</a>
+  <a href="index.html#about">Our Story</a>
+  <a href="past-runs.html">Past Runs</a>
+  <a href="index.html#updates">Run Updates</a>
+  <a href="index.html#register">Register</a>
+  <a href="index.html#contact">Contact Us</a>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <a href="index.html#home" class="logo">
+      <img src="./logo.jpeg" alt="Unlaced Theory Logo" class="logo-img">
+      Unlaced<span>Theory</span>
+    </a>
+    <nav>
+      <a href="index.html#home">Home</a>
+      <a href="index.html#about">Our Story</a>
+      <a href="past-runs.html" style="color:var(--orange);">Past Runs</a>
+      <a href="index.html#updates">Run Updates</a>
+      <a href="index.html#register">Register</a>
+      <a href="index.html#contact">Contact Us</a>
+      <a href="index.html#register" class="nav-cta">Join Next Run</a>
+    </nav>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Our Journey</span>
+    <h1 class="section-title">The Story So Far: <span>Past Runs</span></h1>
+    <p>Explore our milestones, photo galleries, and how our run club community has grown step by step.</p>
+  </div>
+</section>
+
+<section id="past-runs">
+  <div class="container">
+    <div class="runs-layout">
+      
+      <!-- UT Run - 1 -->
+      <div class="run-row">
+        <div class="run-content">
+          <h3>The Genesis: <span>UT Run - 1</span></h3>
+          <p>
+            Every movement needs a starting point. <strong>UT Run - 1</strong>, our very first run, was honestly one of the most unforgettable experiences for us. Seeing an idea that started from random conversations actually come to life felt surreal.
+            <br><br>The run was held at Bratt, and what made it even more special was the police escort that accompanied us throughout the route. It gave the whole event such an energetic and professional vibe, and seeing everyone run together early in the morning was genuinely exciting.
+            <br><br>But it wasn’t just about the run. After crossing the finish line, everyone stayed back for the afterparty, where people got to chill, interact, dance, take pictures, and just enjoy the moment together.
+          </p>
+          <div class="run-stats">
+            <div class="stat-box">
+              <span class="stat-num">01</span>
+              <span class="stat-label">First Milestone</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">100%</span>
+              <span class="stat-label">Pure Vibe</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">Bratt</span>
+              <span class="stat-label">Location Base</span>
+            </div>
+          </div>
+        </div>
+        <div class="run-media-wrap">
+          <div class="run-badge">
+            <span class="run-badge-num">Police</span>
+            <span class="run-badge-text">Supervised<br>Running</span>
+          </div>
+          <div class="run-graphic-container">
+            <img src="DSC00444.jpg" alt="UT Run 1 Start Baseline">
+            <div class="run-overlay">
+              <span class="run-tag">Inaugural Event</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UT Run - 2 -->
+      <div class="run-row reverse">
+        <div class="run-media-wrap">
+          <div class="gallery-grid">
+            <div class="gallery-item"><img src="DSC03652.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC03665.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC03685.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC03693.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC03924.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC04100.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC04307.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC04526.jpg" alt="UT Run 2 Moment"></div>
+            <div class="gallery-item"><img src="DSC04598.jpg" alt="UT Run 2 Moment"></div>
+          </div>
+        </div>
+        <div class="run-content">
+          <h3>Leveling Up: <span>UT Run - 2</span></h3>
+          <p>
+            Following an amazing launch, we brought the heat for <strong>UT Run - 2</strong>. Conducted on the bright morning of <strong>June 7th at 6:00 AM</strong>, this session turned things up with an energizing <strong>5km route</strong> starting and finishing right outside <strong>Arise Café</strong>.
+            <br><br>The turn-out was absolutely electric! The energy kept pounding well past the finish line as the community rallied inside for a high-intensity morning afterparty. It is safe to say the youth culture of Vijayawada has completely embraced early mornings.
+          </p>
+          <div class="run-stats">
+            <div class="stat-box">
+              <span class="stat-num">5K</span>
+              <span class="stat-label">Distance Cleared</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">June 7</span>
+              <span class="stat-label">Event Date</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">Arise</span>
+              <span class="stat-label">Cafe Hub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UT Run - 3 (NEWLY ADDED) -->
+      <div class="run-row">
+        <div class="run-content">
+          <h3>Expanding Horizons: <span>UT Run - 3</span></h3>
+          <p>
+            For <strong>UT Run - 3</strong> on the morning of <strong>July 19th at 6:00 AM</strong>, our community gathered at <strong>Crab Café</strong> for another massive turnout. 
+            <br><br>From pre-run stretch sessions under the trees to pounding the pavement together and celebrating back at the café with delicious breakfast refreshments, the energy was through the roof. The community continues to grow stronger with every single step!
+          </p>
+          <div class="run-stats">
+            <div class="stat-box">
+              <span class="stat-num">July 19</span>
+              <span class="stat-label">Event Date</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">6:00 AM</span>
+              <span class="stat-label">Kickoff Time</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num">Crab Café</span>
+              <span class="stat-label">Location Base</span>
+            </div>
+          </div>
+        </div>
+        <div class="run-media-wrap">
+          <div class="gallery-grid">
+            <div class="gallery-item"><img src="UT-03-6.jpg" alt="UT Run 3 Stretch Session"></div>
+            <div class="gallery-item"><img src="UT-03-7.jpeg" alt="UT Run 3 Founders & Flag"></div>
+            <div class="gallery-item"><img src="UT-03-1.jpeg" alt="UT Run 3 Flag Cape"></div>
+            <div class="gallery-item"><img src="UT-03-2.jpg" alt="UT Run 3 Route Action"></div>
+            <div class="gallery-item"><img src="UT-03-3.jpg" alt="UT Run 3 Group Run"></div>
+            <div class="gallery-item"><img src="UT-03-4.jpeg" alt="UT Run 3 Runners Pace"></div>
+            <div class="gallery-item"><img src="UT-03-5.jpeg" alt="UT Run 3 Crab Cafe Gathering"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html#home" class="logo">Unlaced<span style="color:var(--orange);">Theory</span></a>
+        <p>A community-first run club built around showing up. No pace requirements, no runner left behind.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation Links</h4>
+        <a href="index.html#home">Home Base</a>
+        <a href="index.html#about">Our Philosophy</a>
+        <a href="past-runs.html">Past Runs</a>
+        <a href="index.html#updates">Run Updates</a>
+        <a href="index.html#register">Register for Runs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Social Links</h4>
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/unlaced_theory" target="_blank">Instagram</a>
+          <a href="https://chat.whatsapp.com/Ed8JNGhQAM4F529b7jT76n" target="_blank">WhatsApp Channel</a>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <div class="container">
+        <p><strong>Health & Liability Disclaimer:</strong> By participating in any Unlaced Theory event, you acknowledge that running involves inherent physical risks. Participants should be in good health and consult a physician before beginning any exercise regimen. Unlaced Theory and its organizers are not liable for any injuries or health complications sustained during club activities. Participation is entirely voluntary and at your own risk.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Unlaced Theory. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Waiver Agreement</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = ''; }
+</script>
+</body>
+</html>
